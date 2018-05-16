@@ -1,0 +1,208 @@
+{
+  "types": [
+    {
+      "new_type_name": "unique_name",
+      "type": "name"
+    }
+  ],
+  "structs": [
+    {
+      "name": "cenlist",
+      "base": "",
+      "fields": [
+        {"name":"id", "type":"unique_name"},
+        {"name":"full_name", "type":"string"},
+        {"name":"price", "type":"asset"},
+        {"name":"can_sell", "type":"uint8"}
+      ]
+    },
+    {
+      "name": "cview",
+      "base": "",
+      "fields": [
+        {"name":"id", "type":"unique_name"}
+      ]
+    },
+    {
+      "name": "iadd",
+      "base": "",
+      "fields": [
+        {"name":"issuer", "type":"account_name"},
+        {"name":"to", "type":"account_name"},
+        {"name":"id", "type":"unique_name"},
+        {"name":"quantity", "type":"uint64"}
+      ]
+    },
+    {
+      "name": "idiscard",
+      "base": "",
+      "fields": [
+        {"name":"issuer", "type":"account_name"},
+        {"name":"to", "type":"account_name"},
+        {"name":"id", "type":"unique_name"},
+        {"name":"quantity", "type":"uint64"}
+      ]
+    },
+    {
+      "name": "ipurchase",
+      "base": "",
+      "fields": [
+        {"name":"buyer", "type":"account_name"},
+        {"name":"seller", "type":"account_name"},
+        {"name":"id", "type":"unique_name"},
+        {"name":"quantity", "type":"uint64"}
+      ]
+    },
+
+    {
+      "name": "transfer",
+      "base": "",
+      "fields": [
+        {"name":"from", "type":"account_name"},
+        {"name":"to", "type":"account_name"},
+        {"name":"quantity", "type":"asset"},
+        {"name":"memo", "type":"string"}
+      ]
+    },
+    {
+      "name": "create",
+      "base": "",
+      "fields": [
+          {"name":"issuer", "type":"account_name"},
+          {"name":"maximum_supply", "type":"asset"},
+          {"name":"can_freeze", "type":"uint8"},
+          {"name":"can_recall", "type":"uint8"},
+          {"name":"can_whitelist", "type":"uint8"}
+      ]
+    },
+    {
+      "name": "issue",
+      "base": "",
+      "fields": [
+          {"name":"to", "type":"account_name"},
+          {"name":"quantity", "type":"asset"},
+          {"name":"memo", "type":"string"}
+      ]
+    }
+
+    {
+      "name": "catalog_item",
+      "base": "",
+      "fields": [
+        {"name":"id", "type":"unique_name"},
+        {"name":"full_name", "type":"string"},
+        {"name":"price", "type":"asset"},
+        {"name":"can_sell", "type":"uint8"}
+      ]
+    },
+    {
+      "name": "inventory_item",
+      "base": "",
+      "fields": [
+        {"name":"id", "type":"unique_name"},
+        {"name":"quantity", "type":"uint64"},
+        {"name":"infinite", "type":"uint8"}
+      ]
+    },
+    {
+      "name": "account",
+      "base": "",
+      "fields": [
+        {"name":"balance", "type":"asset"},
+        {"name":"frozen", "type":"uint8"},
+        {"name":"whitelist", "type":"uint8"}
+      ]
+    },
+    {
+      "name": "currency_stats",
+      "base": "",
+      "fields": [
+        {"name":"supply", "type":"asset"},
+        {"name":"max_supply", "type":"asset"},
+        {"name":"issuer", "type":"account_name"},
+        {"name":"can_freeze", "type":"uint8"},
+        {"name":"can_recall", "type":"uint8"},
+        {"name":"can_whitelist", "type":"uint8"},
+        {"name":"is_frozen", "type":"uint8"},
+        {"name":"enforce_whitelist", "type":"uint8"}
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "name": "cenlist",
+      "type": "cenlist",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "cview",
+      "type": "cview",
+      "ricardian_contract": ""
+    },
+    
+    {
+      "name": "iadd",
+      "type": "iadd",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "idiscard",
+      "type": "idiscard",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "ipurchase",
+      "type": "ipurchase",
+      "ricardian_contract": ""
+    },
+
+    {
+      "name": "transfer",
+      "type": "transfer",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "issue",
+      "type": "issue",
+      "ricardian_contract": ""
+    },
+    {
+      "name": "create",
+      "type": "create",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [
+    {
+      "name": "catalog",
+      "type": "catalog_item",
+      "index_type": "i64",
+      "key_names" : ["id"],
+      "key_types" : ["uint64"]
+    },
+    {
+      "name": "inventory",
+      "type": "inventory_item",
+      "index_type": "i64",
+      "key_names" : ["id"],
+      "key_types" : ["uint64"]
+    },
+
+    
+    {
+      "name": "accounts",
+      "type": "account",
+      "index_type": "i64",
+      "key_names" : ["currency"],
+      "key_types" : ["uint64"]
+    },
+    {
+      "name": "stat",
+      "type": "currency_stats",
+      "index_type": "i64",
+      "key_names" : ["currency"],
+      "key_types" : ["uint64"]
+    }
+  ],
+  "ricardian_clauses": []
+}
