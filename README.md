@@ -3,7 +3,7 @@
 A smart contract for simulating an inventory system running on a blockchain.
 
 
-### Overview
+## Overview
 
 The smart contract was created with the intention of using it as a backend in an online game with shopping mechanics. Such use cases are the following:
 
@@ -16,7 +16,7 @@ The goal of this smart contract is to be a cryptocurrency payment solution to an
 ![Inventory Smart Contract Diagram](https://github.com/novazerone/eos-inventory/blob/master/isc_graph.png?raw=true)
 *Created with MindMup*
 
-### Usage
+## Usage
 
 The contract is to be applied to an account created for the purpose of managing an inventory of apps. So, this is not really applied to an individual user with inventory capabilities, say, a player in a game. The smart contract manages the inventory of every account involved: buyers and sellers.
 
@@ -28,9 +28,9 @@ For example, multiple users do an in-app purchase of varying amounts of digital 
 
 Furthermore, the smart contract is derived from the **currency** contract included in the eosio installation. As a result, you may use the actions defined in the parent contract (issue, transfer, etc.) from within.
 
-#### Actions
+### Actions
 
-###### cenlist
+**cenlist**
 
 Registers an item in the catalog. This item will then be available for purchase.
 
@@ -38,7 +38,7 @@ Sample command:
 
     cleos push action _account_ cenlist '["fbow", "Flaming Bow", "1000.00 EOS", 1]' -p _account_
 
-###### cview
+**cview**
 
 Views an item from the catalog. Prints the details of the item such as its full name and price to the console.
 
@@ -46,7 +46,7 @@ Sample command:
 
     cleos push action _account_ cview '["fbow"]' -p _account_
 
-###### iadd
+**iadd**
 
 Adds a certain amount of specified item to an account's inventory.
 
@@ -54,7 +54,7 @@ Sample command:
 
     cleos push action _account_ iadd '["issuer", "targetaccount", "fbow", 5]' -p _account_
 
-###### idiscard
+**idiscard**
 
 Discards a certain amount of specified item in an account's inventory.
 
@@ -62,7 +62,7 @@ Sample command:
 
     cleos push action _account_ idiscard '["issuer", "targetaccount", "fbow", 5]' -p _account_
 
-###### ipurchase
+**ipurchase**
 
 Purchases an item from one account to another. This command will also call iadd and idiscard, as well as the inline_transfer action from the currency contract.
 
@@ -71,12 +71,12 @@ Sample command:
     cleos push action _account_ ipurchase '["buyingaccount", "sellingaccount", "fbow", 5]' -p _account_
 
 
-#### Tables
+### Tables
 
-###### Catalog
+**Catalog**
 
 This table is used to identify an item in the inventory system. 
 
-###### Inventory
+**Inventory**
 
 This table is used to represent the inventory itself. From the catalog table, a digital item can be tracked by the account. Basically, this table contains data on the amount of items an account has.
